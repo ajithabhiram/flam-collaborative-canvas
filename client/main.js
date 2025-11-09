@@ -123,7 +123,7 @@ function renderCursor(userId, pos) {
   el.style.top = `${y}px`;
 }
 
-// Wire drawing to socket
+
 let currentTemp = null;
 engine.onPointerDown((p) => {
   currentTemp = genTempId();
@@ -148,5 +148,5 @@ engine.onPointerUp(() => {
   currentTemp = null;
 });
 
-// Establish websocket connection on load
+
 connect();
