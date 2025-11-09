@@ -125,6 +125,7 @@ export class CanvasEngine {
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.lineWidth = width * this.pixelRatio;
+    
     if (tool === 'eraser') {
       ctx.globalCompositeOperation = 'destination-out';
       ctx.strokeStyle = 'rgba(0,0,0,1)';
@@ -132,10 +133,26 @@ export class CanvasEngine {
       ctx.globalCompositeOperation = 'source-over';
       ctx.strokeStyle = color;
     }
+    
+    // Use quadratic curve for smoother strokes
+    const midX = (a.x + b.x) / 2;
+    const midY = (a.y + b.y) / 2;
+    
     ctx.beginPath();
     ctx.moveTo(a.x, a.y);
+    ctx.quadraticCurveTo(a.x, a.y, midX, midY);
     ctx.lineTo(b.x, b.y);
     ctx.stroke();
+    
+    // Add anti-aliasing for smoother appearance
+    ctx.globalAlpha = 0.3;
+    ctx.lineWidth = (width * this.pixelRatio) + 1;
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.quadraticCurveTo(a.x, a.y, midX, midY);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+    
     ctx.restore();
   }
 
