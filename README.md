@@ -7,7 +7,7 @@ Multiple users can draw simultaneously on a shared canvas with smooth synchroniz
 
 ## 🌐 Live Demo
 
-👉 [https://flam-collaborative-canvas.onrender.com/](https://flam-collaborative-canvas.onrender.com/)
+👉 [https://flam-collaborative-canvas-production.up.railway.app/](https://flam-collaborative-canvas-production.up.railway.app/)
 
 ---
 
