@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collaborative Canvas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="toolbar">
+      <div class="brand">Collaborative Canvas</div>
+      <div class="group">
+        <label>Tool</label>
+        <button id="tool-brush" class="btn" data-tool="brush">Brush</button>
+        <button id="tool-eraser" class="btn" data-tool="eraser">Eraser</button>
+      </div>
+      <div class="group">
+        <label>Color</label>
+        <input id="color" type="color" value="#111827" />
+      </div>
+      <div class="group">
+        <label>Width</label>
+        <input id="width" type="range" min="1" max="40" value="6" />
+        <span id="width-val">6</span>
+      </div>
+      <div class="group">
+        <button id="undo" class="btn">Undo</button>
+        <button id="redo" class="btn">Redo</button>
+      </div>
+      <div class="group">
+        <label>Room</label>
+        <input id="room" type="text" placeholder="lobby" />
+        <button id="join-room" class="btn">Join</button>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <h3>Online Users</h3>
+      <ul id="users"></ul>
+    </aside>
+
+    <main class="canvas-wrap">
+      <canvas id="canvas"></canvas>
+      <div id="cursors"></div>
+    </main>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
