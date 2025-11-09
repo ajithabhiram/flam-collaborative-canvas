@@ -1,50 +1,53 @@
-# Collaborative Canvas
+# 🎨 Collaborative Canvas
 
-Minimal multi-user real-time drawing app using vanilla JS, HTML5 Canvas, and Node.js + Socket.io.
+A **real-time multi-user drawing application** built using **Vanilla JavaScript**, **HTML5 Canvas**, **Node.js**, and **Socket.io**.  
+Multiple users can draw simultaneously on a shared canvas with smooth synchronization, user indicators, and global undo/redo.
 
-## Setup
+---
 
-- Prereqs: Node.js LTS 18+
-- Install and run:
+## 🌐 Live Demo
 
-```
-npm install
-npm start
-```
+👉 [https://flam-collaborative-canvas.onrender.com/](https://flam-collaborative-canvas.onrender.com/)
 
-Open http://localhost:3000 in multiple tabs to test.
+---
 
-## Features
+## 📋 Overview
 
-- Brush and eraser
-- Color and stroke width
-- Real-time streaming strokes (see while drawing)
-- Online users list (name + color)
-- Cursor indicators
-- Global undo/redo across all users
-- Rooms via `?room=name` (input in UI)
+This project enables **multiple users** to draw collaboratively on the same canvas **in real time**.  
+Each participant can use drawing tools such as brushes, erasers, color selection, and stroke width adjustment.  
+The system also includes user tracking, live cursor indicators, and synchronized undo/redo actions across all users.
 
-## How to test multi-user
+---
 
-- Open two browser tabs/windows to http://localhost:3000
-- Optionally set different rooms via the Room input or URL `?room=team1`
-- Draw in one tab and watch it appear in the other in real time
-- Try Undo/Redo in any tab; it affects the global canvas state for that room
+## 🚀 Features
 
-## Known limitations
+- ✏️ **Drawing Tools:** Brush, eraser, stroke width, and color picker  
+- ⚡ **Real-Time Collaboration:** Socket.io ensures seamless multi-user updates  
+- 🔁 **Global Undo/Redo:** Maintains consistency across all users  
+- 👥 **User Indicators:** Shows online users and cursor movements  
+- 🔒 **Conflict Handling:** Server-resolved order of operations  
+- 💻 **Cross-Browser Compatibility:** Works on Chrome, Firefox, Safari, and Edge  
 
-- No persistence across server restarts (in-memory only)
-- Cursor labels don't show user names/colors in the overlay (kept minimal)
-- Basic conflict resolution: eraser uses compositing; overlapping strokes both apply
-- No mobile gesture UI tweaks; pointer events should work on touch devices
+---
 
-## Time spent
+## 🧩 Tech Stack
 
-- Scaffolding + server: ~45m
-- Canvas engine + client WS: ~75m
-- Docs + polish: ~30m
+| Layer | Technology |
+|-------|-------------|
+| **Frontend** | HTML5, CSS3, Vanilla JavaScript |
+| **Backend** | Node.js, Express.js |
+| **Real-Time Communication** | Socket.io (WebSockets) |
+| **Deployment** | Render (Node Web Service) |
 
-## Scripts
+---
 
-- `npm start` – start server on port 3000
-- `npm run dev` – start with nodemon reload
+## ⚙️ Local Setup Instructions
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/ajithabhiram/flam-collaborative-canvas.git
+cd flam-collaborative-canvas
+Install Dependencies-npm install
+Start the Server-npm start
+
+
