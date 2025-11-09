@@ -16,10 +16,10 @@ const io = new SocketIOServer(server, {
 
 const PORT = process.env.PORT || 3000;
 
-// Static client
+
 app.use(express.static(path.join(__dirname, '..', 'client')));
 
-// Root serves index.html
+
 app.get('/', (_req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 });
@@ -42,15 +42,13 @@ io.on('connection', (socket) => {
   socket.emit('state:full', room.state.getSerializable());
   io.to(roomName).emit('users:update', room.getUsersPublic());
 
-  // Cursor updates
+
   socket.on('cursor:move', (pos) => {
     room.setCursor(socket.id, pos);
     const user = room.users.get(socket.id);
     const enriched = user ? { ...pos, name: user.name, color: user.color } : pos;
     socket.to(roomName).emit('cursor:update', { userId: socket.id, pos: enriched });
   });
-
-  // Stroke lifecycle: stream points for real-time drawing
   socket.on('stroke:start', (payload) => {
     // payload: { tempId, tool, color, width, point: {x,y}, ts }
     const op = room.state.startOp({
@@ -62,7 +60,7 @@ io.on('connection', (socket) => {
       tempId: payload.tempId,
       firstPoint: payload.point,
     });
-    // Map tempId->opId resolved for others
+   
     io.to(roomName).emit('op:add', { ...op, points: [payload.point] });
   });
 
